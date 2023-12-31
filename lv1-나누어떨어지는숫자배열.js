@@ -1,9 +1,6 @@
 // 12910
 
 function solution(arr, divisor) {
-  let ansArr = [];
-  arr.forEach((v, i) => {
-    if (v % divisor === 0) ansArr.push(v);
-  });
-  return ansArr.length == 0 ? [-1] : ansArr.sort((a, b) => a - b);
+  let ansArr = arr.filter((v) => v % divisor == 0);
+  return ansArr.length ? ansArr.sort((a, b) => a - b) : [-1];
 }
