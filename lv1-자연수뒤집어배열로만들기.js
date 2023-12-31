@@ -3,6 +3,6 @@
 
 function solution(n) {
   let arr = [];
-  [...String(n)].map((v, i) => arr.unshift(parseInt(v)));
+  [...String(n)].foreach((v, i) => arr.unshift(parseInt(v)));
   return arr;
 }
