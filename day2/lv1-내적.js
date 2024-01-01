@@ -3,10 +3,8 @@
 const _ = require('lodash');
 
 function solution(a, b) {
-  let ans = 0;
   let zippedArr = _.zip(a, b);
-  zippedArr.forEach(([v1, v2]) => (ans += v1 * v2));
-  return ans;
+  return zippedArr.map(([v1, v2]) => v1 * v2).reduce((acc, curVal) => acc + curVal, 0);
 }
 
 let a = [1, 2, 3, 4];
