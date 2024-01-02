@@ -8,5 +8,5 @@
 // }
 
 function solution(s) {
-  return [4, 6].includes(s.length) ? ([...s].some(isNaN) ? false : true) : false;
+  return [4, 6].includes(s.length) ? [...s].some(isNaN) : false;
 }
