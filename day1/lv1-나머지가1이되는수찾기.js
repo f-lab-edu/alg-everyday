@@ -7,3 +7,5 @@ function solution(n) {
   }
   return leastNum;
 }
+
+solution(1, 1);

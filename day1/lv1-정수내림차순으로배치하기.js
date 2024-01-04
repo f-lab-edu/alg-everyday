@@ -5,6 +5,7 @@ function solution(n) {
     [...String(n)]
       .map(Number)
       .sort((a, b) => b - a)
-      .join('')
+      .join(""),
+    10,
   );
 }
