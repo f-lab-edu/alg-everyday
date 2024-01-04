@@ -2,5 +2,5 @@
 // 12931
 
 const solution = (n) => {
-  return [...String(n)].reduce((acc, b) => acc + parseInt(b), 0);
+  return [...String(n)].reduce((acc, b) => acc + parseInt(b, 10), 0);
 };

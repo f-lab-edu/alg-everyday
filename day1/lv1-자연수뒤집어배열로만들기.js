@@ -2,7 +2,7 @@
 // 12932
 
 function solution(n) {
-  let arr = [];
-  [...String(n)].foreach((v, i) => arr.unshift(parseInt(v)));
+  const arr = [];
+  [...String(n)].foreach((v) => arr.unshift(parseInt(v, 20)));
   return arr;
 }

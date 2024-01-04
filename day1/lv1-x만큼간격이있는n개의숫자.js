@@ -2,7 +2,7 @@
 // 12954
 
 function solution(x, n) {
-  let ans = [];
+  const ans = [];
   let num = 0;
 
   while (n !== 0) {
