@@ -12,8 +12,7 @@
 const _ = require('lodash');
 
 function solution(arr1, arr2) {
-  let zippedArr = _.zipWith(arr1, arr2);
-  return zippedArr.map(([v1, v2]) => _.zipWith(v1, v2, (a, b) => a + b));
+  return _.zipWith(arr1, arr2, (v1, v2) => _.zipWith(v1, v2, (a, b) => a + b));
 }
 
 let a1 = [
