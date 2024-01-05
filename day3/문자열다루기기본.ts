@@ -7,6 +7,6 @@
 //   return false;
 // }
 
-function solution(s) {
-  return [4, 6].includes(s.length) && [...s].some(isNaN);
+function 문자열다루기기본(s: string) {
+  return [4, 6].includes(s.length) && [...s].some((v: any) => isNaN(v));
 }
