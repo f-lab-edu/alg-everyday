@@ -12,6 +12,6 @@
 
 function 예산(d: number[], budget: number) {
   return d
-    .sort((a: number, b: number) => a - b)
+    .toSorted((a: number, b: number) => a - b)
     .filter((v: number) => (budget -= v) >= 0).length;
 }
