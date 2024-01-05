@@ -10,6 +10,8 @@
 //     return count;
 // }
 
-function solution(d, budget) {
-  return d.sort((a, b) => a - b).filter((v) => (budget -= v) >= 0).length;
+function 예산(d: number[], budget: number) {
+  return d
+    .sort((a: number, b: number) => a - b)
+    .filter((v: number) => (budget -= v) >= 0).length;
 }

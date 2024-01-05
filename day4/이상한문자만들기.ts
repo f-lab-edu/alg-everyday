@@ -1,6 +1,6 @@
 // 12930
 
-function solution(s) {
+function 이상한문자만들기(s: string) {
   return s
     .split(" ")
     .map((v) =>

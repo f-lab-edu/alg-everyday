@@ -1,6 +1,6 @@
 // 147355
 
-function solution(t, p) {
+function 크기가작은부분문자열(t: string, p: string) {
   const pLen = p.length;
   const tLen = t.length;
   let count = 0;
