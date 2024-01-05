@@ -1,6 +1,6 @@
 // 12910
 
-function solution(arr, divisor) {
+function 나누어떨어지는숫자배열(arr: any[], divisor: number) {
   const ansArr = arr.filter((v) => v % divisor === 0);
   return ansArr.length ? ansArr.sort((a, b) => a - b) : [-1];
 }

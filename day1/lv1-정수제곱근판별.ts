@@ -1,6 +1,6 @@
 // 12934
 
-function solution(n) {
+function solution(n: number) {
   // 약수가 홀수이면 어떤 양의 정수 x의 제곱이다.
   // 약수의 개수 파악 -> 시간 초과
 

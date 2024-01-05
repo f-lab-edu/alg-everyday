@@ -1,6 +1,6 @@
 // 12919
 
-function solution(seoul) {
+function 서울에서김서방찾기(seoul: any[]) {
   let index = -1;
   seoul.forEach((v, i) => {
     if (v === "Kim") index = i;

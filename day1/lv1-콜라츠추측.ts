@@ -1,6 +1,6 @@
 // 12943
 
-function solution(num) {
+function 콜라추측(num: number) {
   let count = 0;
   while (num !== 1) {
     if (count === 500) return -1;

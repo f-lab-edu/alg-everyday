@@ -1,6 +1,6 @@
 // 12916
 
-function solution(s) {
+function solution(s: string) {
   let pNum = 0;
   let yNum = 0;
   [...s].forEach((v) => {

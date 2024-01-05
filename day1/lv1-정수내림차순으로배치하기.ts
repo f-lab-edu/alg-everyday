@@ -1,6 +1,6 @@
 // 12933
 
-function solution(n) {
+function solution(n: number) {
   return parseInt(
     [...String(n)]
       .map(Number)

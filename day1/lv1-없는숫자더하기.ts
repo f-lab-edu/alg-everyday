@@ -1,6 +1,6 @@
 // 86051
 
-function solution(numbers) {
+function 없는숫자더하기(numbers: any[]) {
   let totalSumZeroToNine = (9 * (1 + 9)) / 2;
   numbers.forEach((v) => (totalSumZeroToNine -= v));
   return totalSumZeroToNine;

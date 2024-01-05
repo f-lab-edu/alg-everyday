@@ -1,6 +1,6 @@
 // 12912
 
-function solution(a, b) {
+function solution(a: number, b: number) {
   if (b < a) [a, b] = [b, a];
   // let ans = 0;
   // for(let i = a; i<=b; i++){

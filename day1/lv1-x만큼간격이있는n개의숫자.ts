@@ -1,7 +1,7 @@
 // x만큼 간격이 있는 n개의 숫자
 // 12954
 
-function solution(x, n) {
+function x만큼간격이있는n개의숫자(x: number, n: number) {
   const ans = [];
   let num = 0;
 

@@ -1,6 +1,6 @@
 // 짝수와 홀수
 // 12937
-function solution(num) {
+function 짝수와홀수(num: number) {
   return num % 2 === 0 ? "Even" : "Odd";
 }
 // == 형변환 일어남
