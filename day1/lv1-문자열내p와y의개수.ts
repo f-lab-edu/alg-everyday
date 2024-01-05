@@ -1,6 +1,6 @@
 // 12916
 
-function solution(s: string) {
+function 문자열내p와y의개수(s: string) {
   let pNum = 0;
   let yNum = 0;
   [...s].forEach((v) => {
