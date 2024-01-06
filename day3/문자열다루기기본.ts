@@ -8,12 +8,12 @@
 // }
 
 // declare.ts에서 선언한 _를 가져오지 못함..
-const lo = require("lodash");
+import { _ } from "../declare";
 
 function 문자열다루기기본(s: string) {
   return (
     [4, 6].includes(s.length) &&
-    [...s].every((v: string) => lo.isInteger(parseInt(v, 10)))
+    [...s].every((v: string) => _.isInteger(parseInt(v, 10)))
   );
 }
 
@@ -26,5 +26,5 @@ console.log(문자열다루기기본(s2));
 // isNumber와 isInteger
 const s = "a";
 console.log(parseInt(s, 10)); // NaN
-console.log(lo.isNumber(parseInt(s, 10))); // true
-console.log(lo.isInteger(parseInt(s, 10))); // false
+console.log(_.isNumber(parseInt(s, 10))); // true
+console.log(_.isInteger(parseInt(s, 10))); // false
