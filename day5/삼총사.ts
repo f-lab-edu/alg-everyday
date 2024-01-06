@@ -5,8 +5,7 @@ function 삼총사(num: number[]) {
   num.forEach((v1) =>
     num.forEach((v2) =>
       num.forEach((v3) => {
-        if (v1 + v2 + v3 === 0)
-          return arr.push([v1, v2, v3].sort((a, b) => a - b));
+        if (v1 + v2 + v3 === 0) arr.push([v1, v2, v3].sort((a, b) => a - b));
       }),
     ),
   );
