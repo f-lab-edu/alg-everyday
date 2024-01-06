@@ -7,8 +7,8 @@ const sol1 = (arr: number[][]) => {
 // 큰 값들 중 큰 값
 const sol2 = (arr: number[][]) => {
   const shortSides = arr.map(_.min);
-  const getLagreValOfSize = arr.map(_.max);
-  return _.max(getSmallValOfSize) * _.max(getLagreValOfSize);
+  const longSides = arr.map(_.max);
+  return _.max(shortSides) * _.max(longSides);
 };
 
 // 실행
