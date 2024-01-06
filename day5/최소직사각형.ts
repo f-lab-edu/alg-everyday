@@ -6,7 +6,7 @@ const sol1 = (arr: number[][]) => {
 // 작은 값들 중 큰 값
 // 큰 값들 중 큰 값
 const sol2 = (arr: number[][]) => {
-  const getSmallValOfSize = arr.map(_.min);
+  const shortSides = arr.map(_.min);
   const getLagreValOfSize = arr.map(_.max);
   return _.max(getSmallValOfSize) * _.max(getLagreValOfSize);
 };
