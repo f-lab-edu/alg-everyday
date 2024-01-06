@@ -1,3 +1,5 @@
+import { _ } from "../declare";
+
 function 삼총사(num: number[]) {
   const arr: number[][] = [];
   num.forEach((v1) =>

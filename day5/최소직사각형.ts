@@ -1,3 +1,5 @@
+import { _ } from "../declare";
+
 const sol1 = (arr: number[][]) => {
   arr.forEach((v) => v.sort((a, b) => a - b));
   return _.multiply(..._.zipWith(...arr, (...arr: number[]) => _.max(arr)));
