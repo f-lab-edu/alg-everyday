@@ -13,7 +13,7 @@ import { _ } from "../declare";
 function 문자열다루기기본(s: string) {
   return (
     [4, 6].includes(s.length) &&
-    [...s].every((v: string) => _.isInteger(parseInt(v, 10)))
+    [...s].every((v) => _.isInteger(parseInt(v, 10)))
   );
 }
 
