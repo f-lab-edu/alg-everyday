@@ -23,7 +23,6 @@ function caesarCipher2(s: string, n: number) {
   const a_ASCII = 97;
   const azNum = 26;
   const isUpper = (s: string) => s.match(/[A-Z]/g);
-  const isLower = (s: string) => s.match(/[a-z]/g);
 
   return [...s]
     .map((v) => {
@@ -32,11 +31,7 @@ function caesarCipher2(s: string, n: number) {
 
       // 공백이 아닐 때의 로직
       const ascNumSum = v.charCodeAt(0) + n;
-      const basisNum = isUpper(v)
-        ? A_ASCII
-        : isLower(v)
-          ? a_ASCII
-          : space_ASCII;
+      const basisNum = isUpper(v) ? A_ASCII : a_ASCII;
       return basisNum + ((ascNumSum - basisNum) % azNum);
     })
     .map((v) => String.fromCharCode(v))
