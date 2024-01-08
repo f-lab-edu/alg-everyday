@@ -2,9 +2,7 @@
 
 const k번째수 = (arr: number[], cmds: number[][]) => {
   return cmds.map((cmd) => {
-    const firstNumIdx = cmd[0] - 1;
-    const lastNumIdx = cmd[1] - 1;
-    const kIdx = cmd[2] - 1;
+    const [firstNumIdx, lastNumIdx, kIdx] = cmd.map((v) => v - 1);
     return arr.slice(firstNumIdx, lastNumIdx + 1).sort((a, b) => a - b)[kIdx];
   });
 };
