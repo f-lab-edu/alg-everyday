@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/81301
+
 import { _ } from "../declare";
 const numArr = [
   "zero",
@@ -24,7 +26,9 @@ map.set("eight", 8);
 map.set("nine", 9);
 
 const 숫자문자열과영단어 = (s: string) => {
-  numArr.forEach((v) => (s = _.replace(s, v, map.get(v))));
+  numArr.forEach((v) => {
+    s = _.replace(s, v, map.get(v));
+  });
   return s;
 };
 

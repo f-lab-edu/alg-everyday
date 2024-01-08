@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/12915
+
 import { _ } from "../declare";
 const 문자열내마음대로정렬하기 = (s: string[], n: number) => {
   return _.sortBy(s, (v: string) => v.slice(n));
