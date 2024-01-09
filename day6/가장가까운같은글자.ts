@@ -9,6 +9,11 @@ const 가장가까운같은글자 = (s: string) => {
       : idx - stringBeforeIdx.lastIndexOf(char); // 자신보다 앞에 같은 글자가 있을 때
   });
 };
+
+// O(n)으로 줄이려면 index를 이진 탐색을 통해 색출해내야 한다
+// -> 아니다, 이진 탐색으로 구현해도 O(n log n)이다
+// 그럼 두 O(n)이 걸리는 함수를 떼어내야 한다
+
 const s1 = "banana";
 const s2 = "foobar";
 
