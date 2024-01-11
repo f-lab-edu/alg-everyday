@@ -6,7 +6,6 @@ const 명예의전당1 = (k: number, score: number[]): number[] => {
     return ranking.length > k ? ranking[k - 1] : ranking[ranking.length - 1];
   });
 };
-
 const [k1, score1] = [3, [10, 100, 20, 150, 1, 100, 200]];
 const [k2, score2] = [4, [0, 300, 40, 300, 20, 70, 150, 50, 500, 1000]];
 
