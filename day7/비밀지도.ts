@@ -21,20 +21,12 @@ import { _ } from "../declare";
 
 // 비트 연산 버전
 const 비밀지도 = (n: number, arr1: number[], arr2: number[]) => {
-  return (
-    // 값의 의미가 중요한 연산 코드
-    _.zipWith(
-      arr1,
-      arr2,
-      (arr1Val: string, arr2Val: string) =>
-        parseInt(arr1Val, 10) | parseInt(arr2Val, 10),
-    )
-      .map((v: number) => v.toString(2)) // [31,21,29,19,31]
-      // 여기부터 형태만 건드리는 코드
-      .map(
-        (v: string) => [...v].map((val) => (val === "1" ? "#" : " ")).join(""),
-        // [...v].map((val) => (parseInt(val,10) ? "#" : " ")).join(""),
-      )
+  return _.zipWith(
+    arr1,
+    arr2,
+    (arr1Val: number, arr2Val: number) => arr1Val | arr2Val,
+  ).map((v: number) =>
+    [...v.toString(2)].map((val) => (val === "1" ? "#" : " ")).join(""),
   );
 };
 
