@@ -1,4 +1,5 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/159994
+
 const 카드뭉치 = (
   cards1: string[],
   cards2: string[],
@@ -28,7 +29,3 @@ const [twoCards1, twoCards2, goal2] = [
 
 console.log(카드뭉치(oneCards1, oneCards2, goal1));
 console.log(카드뭉치(twoCards1, twoCards2, goal2));
-
-const arr = [1, 2, 3, 4];
-arr.shift();
-console.log(arr);
