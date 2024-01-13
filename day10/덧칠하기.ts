@@ -1,13 +1,31 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/161989
 
+// 메모리 비효율
+// const 덧칠하기 = (n: number, m: number, section: number[]): number => {
+//   const wall = Array(n).fill(true);
+//   section.forEach((v) => (wall[v] = false));
+//   console.log(wall);
+//   let cnt = 0;
+//   for (let i = 0; i < wall.length; i++) {
+//     if (wall[i] === false) {
+//       wall.fill(true, i, i + m);
+//       cnt++;
+//     }
+//   }
+//   return cnt;
+// };
+
 const 덧칠하기 = (n: number, m: number, section: number[]): number => {
-  const wall = Array(n).fill(true);
-  section.forEach((v) => (wall[v] = false));
-  console.log(wall);
+  // n : 벽의 길이
+  // m : 롤러의 길이
+  // section 요소 : 칠해야하는 벽
+  // [0, 1, 1, 0, 0, 0, 1, 0, 0]
+  // [2, 3, 6]
   let cnt = 0;
-  for (let i = 0; i < wall.length; i++) {
-    if (wall[i] === false) {
-      wall.fill(true, i, i + m);
+  let isPainted = 0;
+  for (const wall of section) {
+    if (isPainted < wall) {
+      isPainted = wall + m - 1;
       cnt++;
     }
   }
