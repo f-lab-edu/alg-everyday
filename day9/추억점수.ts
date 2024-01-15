@@ -11,7 +11,7 @@ const 추억점수 = (
   const scoreMap = new Map();
   name.forEach((v, i) => scoreMap.set(v, yearing[i]));
   return photo.map((album) =>
-    _.sum(album.map((name) => (scoreMap.has(name) ? scoreMap.get(name) : 0))),
+    _.sum(album.map((name) => scoreMap.get(name) || 0)),
   );
 };
 
