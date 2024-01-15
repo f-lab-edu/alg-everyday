@@ -12,10 +12,10 @@ import { _ } from "../declare";
 // };
 
 const 두개뽑아서더하기 = (numbers: number[]): number[] => {
-  const sums: number[][] = numbers.map((_, idx) =>
+  const sums: number[] = numbers.flatMap((_, idx) =>
     numbers.filter((_, i) => i !== idx).map((v) => numbers[idx] + v),
   );
-  return _.uniq(sums.flatMap((x) => x)).sort((a: number, b: number) => a - b);
+  return _.uniq(sums).sort((a: number, b: number) => a - b);
 };
 
 const n1 = [2, 1, 3, 4, 1];
