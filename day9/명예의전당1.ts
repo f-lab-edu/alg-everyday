@@ -3,7 +3,10 @@
 const 명예의전당1 = (k: number, score: number[]): number[] => {
   return score.map((_, i) => {
     const ranking: number[] = score.slice(0, i + 1).sort((a, b) => b - a);
-    return ranking.length > k ? ranking[k - 1] : ranking[ranking.length - 1];
+    return ranking[Math.min(ranking.length, k) - 1];
+    // (1) ranking.length > k ? ranking[k - 1] : ranking[ranking.length - 1]
+    // (2) ranking[rankLen > k ? k -1 : rankLen - 1]
+    // (3) ranking[Math.min(ranking.length, k) - 1]
   });
 };
 const [k1, score1] = [3, [10, 100, 20, 150, 1, 100, 200]];
