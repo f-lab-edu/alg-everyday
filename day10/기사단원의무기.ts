@@ -48,18 +48,20 @@ const 기사단원의무기 = (
   limit: number,
   power: number,
 ): number => {
-  const divisorNums = _.range(0, number, 0).map((_: number, i: number): any => {
-    const number = i + 1;
-    const sqrtNumber = Math.sqrt(number);
-    let cnt = 0;
-    for (let j = 0; j <= sqrtNumber; j++) {
-      if (number % j === 0) cnt += 2;
-    }
-    // for 문 안에서 여러 번 동작하는 것을 피함
-    if (Math.floor(sqrtNumber) === sqrtNumber) cnt -= 1;
-    return cnt > limit ? power : cnt;
-    // return _.min([cnt, limit]) === cnt ? power : cnt; //
-  });
+  const divisorNums = _.range(0, number, 0).map(
+    (_: number, i: number): number => {
+      const number = i + 1;
+      const sqrtNumber = Math.sqrt(number);
+      let cnt: number = 0;
+      for (let j = 0; j <= sqrtNumber; j++) {
+        if (number % j === 0) cnt += 2;
+      }
+      if (Math.floor(sqrtNumber) === sqrtNumber) cnt -= 1;
+      return Math.min(cnt, limit) === cnt ? power : cnt;
+      // (1) return cnt > limit ? power : cnt;
+      // (2) return _.min([ cnt, limit]) === cnt ? power : cnt;
+    },
+  );
   return _.sum(divisorNums);
 };
 
