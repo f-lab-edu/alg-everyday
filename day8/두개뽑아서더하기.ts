@@ -11,9 +11,17 @@ import { _ } from "../declare";
 //   return _.uniq(arr).sort((a: number, b: number) => a - b);
 // };
 
+// const 두개뽑아서더하기 = (numbers: number[]): number[] => {
+//   const sums: number[] = numbers.flatMap((_, idx) =>
+//     numbers.filter((_, i) => i !== idx).map((v) => numbers[idx] + v),
+//   );
+//   return _.uniq(sums).sort((a: number, b: number) => a - b);
+// };
+
+// 요청 사항: x+y = y+x 중복 제거
 const 두개뽑아서더하기 = (numbers: number[]): number[] => {
   const sums: number[] = numbers.flatMap((_, idx) =>
-    numbers.filter((_, i) => i !== idx).map((v) => numbers[idx] + v),
+    numbers.filter((_, i) => i < idx).map((v) => numbers[idx] + v),
   );
   return _.uniq(sums).sort((a: number, b: number) => a - b);
 };
