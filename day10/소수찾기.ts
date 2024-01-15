@@ -18,22 +18,34 @@
 // };
 
 // 시간 초과
+// const 소수찾기 = (n: number) => {
+//   let cnt = 0;
+//   for (let i = 2; i <= n; i++) {
+//     let isPrime = true;
+//     for (let j = 2; j <= Math.sqrt(i); j++) {
+//       if (i % j === 0) {
+//         console.log(`소수가 아니다.i: ${i}, j: ${j}`);
+//         isPrime = false;
+//       }
+//     }
+//     if (isPrime === true) {
+//       cnt++;
+//     }
+//   }
+//   return cnt;
+// };
+
+//에라토스테네스의 체
+// 메모리 효율 버전
 const 소수찾기 = (n: number) => {
+  const arr: boolean[] = [];
   let cnt = 0;
   for (let i = 2; i <= n; i++) {
-    // 2 부터 n까지 모두 반복한다
-    let isPrime = true; // 소수인지 먼저 true 설정해준 뒤
-    for (let j = 2; j <= Math.sqrt(i); j++) {
-      // 각 숫자를 검사한다
-      if (i % j === 0) {
-        // 만약 자기 자신이 아닌 수로 나눠진다면
-        console.log(`소수가 아니다.i: ${i}, j: ${j}`);
-        isPrime = false; // 소수가 아니다
+    if (arr[i] !== false) {
+      cnt++;
+      for (let j = i * i; j <= n; j += i) {
+        arr[j] = false;
       }
-    }
-    // 나눠지는 수가 없다면 true로
-    if (isPrime === true) {
-      cnt++; // 소수 카운트를 증가시킨다
     }
   }
   return cnt;
