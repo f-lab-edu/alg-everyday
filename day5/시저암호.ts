@@ -38,5 +38,5 @@ function caesarCipher2(s: string, n: number) {
     .join("");
 }
 
-const str = "a B z";
-console.log(caesarCipher2(str, 4)); // e F d
+const day5str = "a B z";
+console.log(caesarCipher2(day5str, 4)); // e F d
