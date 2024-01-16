@@ -38,13 +38,13 @@
 //에라토스테네스의 체
 // 메모리 효율 버전
 const 소수찾기 = (n: number) => {
-  const arr: boolean[] = [];
+  const primeNumsOnly: boolean[] = [];
   let cnt = 0;
   for (let i = 2; i <= n; i++) {
-    if (arr[i] !== false) {
+    if (primeNumsOnly[i] !== false) {
       cnt++;
       for (let j = i * i; j <= n; j += i) {
-        arr[j] = false;
+        primeNumsOnly[j] = false;
       }
     }
   }
