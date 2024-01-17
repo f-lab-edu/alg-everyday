@@ -9,36 +9,12 @@ import { _ } from "../declare";
 //   const divisorNums = Array(number)
 //     .fill(0)
 //     .map((_, i) => {
-//       const arr = [];
+//       let cnt = 0;
 //       for (let j = 0; j <= i + 1; j++) {
-//         if ((i + 1) % j === 0) arr.push(1);
+//         if ((i + 1) % j === 0) cnt++;
 //       }
-//       return arr.length > limit ? power : arr.length;
+//       return Math.min(cnt, limit) === cnt ? cnt : power;
 //     });
-
-//   return _.sum(divisorNums);
-// };
-
-// // 효율성 개선 - const만 쓰기 버전
-// const 기사단원의무기 = (
-//   number: number,
-//   limit: number,
-//   power: number,
-// ): number => {
-//   const divisorNums = Array(number)
-//     .fill(0)
-//     .map((_, i) => {
-//       const number = i + 1;
-//       const arr = []; // let을 안 쓰면
-//       for (let j = 0; j <= Math.sqrt(number); j++) {
-//         if (number % j === 0) {
-//           arr.push(1, 1);
-//           if (j === Math.sqrt(number)) arr.pop();
-//         }
-//       }
-//       return arr.length > limit ? power : arr.length;
-//     });
-
 //   return _.sum(divisorNums);
 // };
 
@@ -57,9 +33,9 @@ const 기사단원의무기 = (
         if (number % j === 0) cnt += 2;
       }
       if (Math.floor(sqrtNumber) === sqrtNumber) cnt -= 1;
-      return Math.min(cnt, limit) === cnt ? power : cnt;
+      return Math.min(cnt, limit) === cnt ? cnt : power;
       // (1) return cnt > limit ? power : cnt;
-      // (2) return _.min([ cnt, limit]) === cnt ? power : cnt;
+      // (2) return _.min([cnt, limit]) === cnt ? cnt : power;
     },
   );
   return _.sum(divisorNums);
