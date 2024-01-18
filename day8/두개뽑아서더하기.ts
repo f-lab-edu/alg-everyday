@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/68644
 
-import { _ } from "../declare";
+import { uniq } from "lodash";
 
 // const 두개뽑아서더하기 = (numbers: number[]): number[] => {
 //   const arr: number[] = [];
@@ -11,6 +11,7 @@ import { _ } from "../declare";
 //   return _.uniq(arr).sort((a: number, b: number) => a - b);
 // };
 
+//! flatMap 도입
 // const 두개뽑아서더하기 = (numbers: number[]): number[] => {
 //   const sums: number[] = numbers.flatMap((_, idx) =>
 //     numbers.filter((_, i) => i !== idx).map((v) => numbers[idx] + v),
@@ -18,12 +19,20 @@ import { _ } from "../declare";
 //   return _.uniq(sums).sort((a: number, b: number) => a - b);
 // };
 
-// 요청 사항: x+y = y+x 중복 제거
+//! 요청 사항: x+y = y+x 중복 제거
+// const 두개뽑아서더하기 = (numbers: number[]): number[] => {
+//   const sums: number[] = numbers.flatMap((_, idx) =>
+//     numbers.filter((_, i) => idx < i).map((v) => numbers[idx] + v),
+//   );
+//   return _.uniq(sums).sort((a: number, b: number) => a - b);
+// };
+
+//! slice 메서드로 간소화하기
 const 두개뽑아서더하기 = (numbers: number[]): number[] => {
   const sums: number[] = numbers.flatMap((_, idx) =>
-    numbers.filter((_, i) => idx < i).map((v) => numbers[idx] + v),
+    numbers.slice(0, idx).map((v) => numbers[idx] + v),
   );
-  return _.uniq(sums).sort((a: number, b: number) => a - b);
+  return uniq(sums).sort((a: number, b: number) => a - b);
 };
 
 const n1 = [2, 1, 3, 4, 1];
