@@ -33,7 +33,7 @@ const 두개뽑아서더하기 = (numbers: number[]): number[] => {
   const sums: number[] = numbers.flatMap((_, idx) =>
     numbers.slice(0, idx).map((v) => numbers[idx] + v),
   );
-  return uniq(sums).sort((a: number, b: number) => a - b);
+  return uniq(sums).sort((a, b) => a - b);
 };
 
 const n1 = [2, 1, 3, 4, 1];
