@@ -21,6 +21,7 @@ import { min, range, sum } from "lodash";
 // };
 
 //! 효율성 개선
+//todo: 2 더하고 1 빼는 과정을 1만 더하는 과정으로 간소화하기
 const 기사단원의무기 = (
   number: number,
   limit: number,
