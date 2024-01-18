@@ -28,6 +28,7 @@ import { uniq } from "lodash";
 // };
 
 //! slice 메서드로 간소화하기
+// filter를 쓸 때보다 더 코드의 의미를 파악하기 쉽다
 const 두개뽑아서더하기 = (numbers: number[]): number[] => {
   const sums: number[] = numbers.flatMap((_, idx) =>
     numbers.slice(0, idx).map((v) => numbers[idx] + v),
