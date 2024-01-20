@@ -20,8 +20,8 @@ import { min, range, sum } from "lodash";
 //   return _.sum(divisorNums);
 // };
 
-//! 효율성 개선
-//todo: 2 더하고 1 빼는 과정을 1만 더하는 과정으로 간소화하기
+//! 효율성 개선: Math.sqrt()를 통해 제곱근만큼만 순회
+//todo: 2 더하고 1 빼는 과정을 더하는 과정으로만 간소화하기
 const 기사단원의무기 = (
   number: number,
   limit: number,
@@ -32,12 +32,9 @@ const 기사단원의무기 = (
       const APSqrt = Math.sqrt(attackPoint);
       let cnt: number = 0;
       for (let j = 0; j <= APSqrt; j++) {
-        if (attackPoint % j === 0) cnt += 2;
+        if (attackPoint % j === 0) cnt += j === APSqrt ? 1 : 2;
       }
-      if (Math.floor(APSqrt) === APSqrt) cnt -= 1;
       return min([cnt, limit]) === cnt ? cnt : power;
-      // (1) return cnt > limit ? power : cnt;
-      // (2) return _.min([cnt, limit]) === cnt ? cnt : power;
     },
   );
   return sum(divisorNums);
