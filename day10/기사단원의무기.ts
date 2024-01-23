@@ -31,9 +31,10 @@ const 기사단원의무기 = (
     (attackPoint: number): number => {
       const APSqrt = Math.sqrt(attackPoint);
       let cnt: number = 0;
-      for (let j = 0; j <= APSqrt; j++) {
-        if (attackPoint % j === 0) cnt += j === APSqrt ? 1 : 2;
+      for (let j = 0; j < APSqrt; j++) {
+        if (attackPoint % j === 0) cnt += 2;
       }
+      if (Math.floor(APSqrt) === APSqrt) cnt += 1;
       return min([cnt, limit]) === cnt ? cnt : power;
     },
   );
