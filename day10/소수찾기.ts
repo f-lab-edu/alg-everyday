@@ -60,7 +60,7 @@ const 소수찾기4 = (n: number) => {
   const primes: number[] = [];
   for (let i = 2; i <= n; i++) {
     let isPrime = true;
-    for (let j = 2; j <= Math.sqrt(i); j++) {
+    for (const j of primes) {
       if (i % j === 0) isPrime = false;
     }
     if (isPrime === true) primes.push(i);
