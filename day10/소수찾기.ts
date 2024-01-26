@@ -91,7 +91,9 @@ const 소수찾기5 = (num: number) => {
 
     // primes[primes.length - 1] <= numSqrt를 통해 불필요한 filter 메서드 동작을 제한했다.
     // 이 조건 연산은 시간적으로 영향이 거의 없다 (이 연산을 쓰는 것이 이득이다.)
-    if (primes[primes.length - 1] <= numSqrt) {
+    // if (primes[primes.length - 1] <= numSqrt) {
+    //! primes[primes.length - 1] 보다 target-1 이 효율이 더 좋다..
+    if (target - 1 <= numSqrt) {
       primesToNumSqrt = primes.filter((prime) => prime <= numSqrt);
     }
 
@@ -103,7 +105,7 @@ const 소수찾기5 = (num: number) => {
   return primes.length;
 };
 
-const day10n1 = 10;
+const day10n1 = 2081;
 const day10n2 = 5;
 
 console.log(소수찾기1(day10n1)); // 4
