@@ -138,7 +138,7 @@ const 소수찾기7 = (num: number) => {
   return primes.length;
 };
 
-//! (7) takeWhile()에서 조건문만 제거
+//! (8) takeWhile()에서 조건문만 제거
 const 소수찾기8 = (num: number) => {
   const primes: number[] = [];
   const numSqrt = Math.sqrt(num);
