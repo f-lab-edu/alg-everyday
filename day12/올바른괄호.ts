@@ -1,10 +1,15 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/12909
 
-import { sum } from "lodash";
-
 const 올바른괄호 = (s: string): boolean => {
   if (s.startsWith(")")) return false;
-  return !sum([...s].map((str) => (str === "(" ? 1 : -1)));
+  let cnt = 0;
+  let ans = true;
+  [...s].forEach((str) => {
+    cnt += str === "(" ? 1 : -1;
+    if (cnt < 0) ans = false;
+  });
+  if (cnt > 0) ans = false;
+  return ans;
 };
 
 const alls1 = "()()";
