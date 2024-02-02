@@ -1,10 +1,13 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/17686
 
+// 프로그래머스 채점용 코드
+// 리펙토링 안되어 있습니다.
+
 // 파일명은 100 글자 이내
 // HEAD : 최소 한 글자
 // NUMBER : 최소 한 글자, 최대 다섯 글자
 // TAIL
-/*
+
 const 파일명정렬forProgrammers = (files: string[]): string[] => {
   const lodashLikeWords = (str: string): string[] => {
     // takewhile쓰면 좋을 듯
@@ -79,4 +82,3 @@ const forPfiles2 = [
 
 console.log(파일명정렬forProgrammers(forPfiles1));
 console.log(파일명정렬forProgrammers(forPfiles2));
-*/
