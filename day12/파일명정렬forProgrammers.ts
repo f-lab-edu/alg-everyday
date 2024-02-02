@@ -4,9 +4,9 @@
 // HEAD : 최소 한 글자
 // NUMBER : 최소 한 글자, 최대 다섯 글자
 // TAIL
-
-const 파일명정렬 = (files: string[]): string[] => {
-  const lodashWords = (str: string): string[] => {
+/*
+const 파일명정렬forProgrammers = (files: string[]): string[] => {
+  const lodashLikeWords = (str: string): string[] => {
     // takewhile쓰면 좋을 듯
 
     const arr = [...str].map((string, i) => {
@@ -25,7 +25,7 @@ const 파일명정렬 = (files: string[]): string[] => {
 
   //! 연산이 필요한 부분만 짜른다
   const indexHeadNumber = files.map(
-    (file) => lodashWords(file.toLocaleLowerCase()).slice(0, 2),
+    (file) => lodashLikeWords(file.toLocaleLowerCase()).slice(0, 2),
     // take(lodashWords(file.toLocaleLowerCase()), 2),
   );
   // console.log(indexHeadNumber);
@@ -61,9 +61,8 @@ const 파일명정렬 = (files: string[]): string[] => {
   const flatArr = arr.flat();
   return flatArr.map((fileKey) => files[map.get(fileKey)]);
 };
-//! 정규표현식 공부하고 돌아오기
 
-const files1 = [
+const forPfiles1 = [
   "i mg12.png",
   "i mg10.png",
   "i mg02.png",
@@ -71,12 +70,13 @@ const files1 = [
   "I MG01.GIF",
   "i mg2.JPG",
 ];
-const files2 = [
+const forPfiles2 = [
   "F-5 Freedom Fighter",
   "B-50 Superfortress",
   "A-10 Thunderbolt II",
   "F-14 Tomcat",
 ];
 
-console.log(파일명정렬(files1));
-console.log(파일명정렬(files2));
+console.log(파일명정렬forProgrammers(forPfiles1));
+console.log(파일명정렬forProgrammers(forPfiles2));
+*/
