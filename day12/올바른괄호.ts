@@ -3,7 +3,7 @@
 import { sum } from "lodash";
 
 const 올바른괄호 = (s: string): boolean => {
-  if (s.charAt(0) === ")") return false;
+  if (s.startsWith(")")) return false;
   return !sum([...s].map((str) => (str === "(" ? 1 : -1)));
 };
 
