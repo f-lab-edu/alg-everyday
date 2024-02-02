@@ -59,10 +59,15 @@ const lodashFiles1 = [
   "i mg2.JPG",
 ];
 const lodashFiles2 = [
-  "F-5 Freedom Fighter",
+  "F-05 Freedom Fighter",
   "B-50 Superfortress",
+  "B-00059 Superfortress",
+  "B-005 Superfortress",
+  "B-53 Superfortress",
   "A-10 Thunderbolt II",
-  "F-14 Tomcat",
+  "F-014 Tomcat",
+  "B-20 Superfortress",
+  "B-3 Superfortress",
 ];
 
 console.log(파일명정렬lodash(lodashFiles1));
