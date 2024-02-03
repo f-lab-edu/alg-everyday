@@ -22,31 +22,37 @@ const cache = (cacheSize: number, cities: string[]): number => {
   let runTime = 0;
   const cacheArr: string[] = [];
 
+  //! cacheHit 함수
+  const cacheHit = (idx: number, str: string) => {
+    cacheArr.splice(idx, 1);
+    cacheArr.push(str);
+    runTime += 1;
+  };
+  //! cacheMiss 함수
+  const cacheMiss = (str: string) => {
+    cacheArr.push(str);
+    runTime += 5;
+  };
+  //! handleCache 함수 - 활용하지 못함
+  // const handleCache = (idx: number, str: string): void => {
+  //   if (idx >= 0) cacheHit(idx, str);
+  //   else cacheMiss(str);
+  // };
+
   //! 메인 코드
   for (const city of cities) {
     const lowerCity = city.toLocaleLowerCase();
     const cityIdxAtCacheArr = cacheArr.indexOf(lowerCity);
     // cacheArr에 빈 공간이 있을 때
     if (cacheArr.length < cacheSize) {
-      if (cityIdxAtCacheArr >= 0) {
-        cacheArr.splice(cityIdxAtCacheArr, 1);
-        cacheArr.push(lowerCity);
-        runTime += 1;
-      } else {
-        cacheArr.push(lowerCity);
-        runTime += 5;
-      }
+      if (cityIdxAtCacheArr >= 0) cacheHit(cityIdxAtCacheArr, lowerCity);
+      else cacheMiss(lowerCity);
     } else {
       // cacheArr에 빈 공간이 없을 때
-      // caheArr에 도시가 있을 때
-      if (cityIdxAtCacheArr >= 0) {
-        cacheArr.splice(cityIdxAtCacheArr, 1);
-        cacheArr.push(lowerCity);
-        runTime += 1;
-      } else {
+      if (cityIdxAtCacheArr >= 0) cacheHit(cityIdxAtCacheArr, lowerCity);
+      else {
         cacheArr.shift();
-        cacheArr.push(lowerCity);
-        runTime += 5;
+        cacheMiss(lowerCity);
       }
     }
   }
