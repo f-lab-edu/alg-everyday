@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/17686
 
-import { orderBy, sortBy, takeWhile, trimStart } from "lodash";
+import { takeWhile, trimStart } from "lodash";
 
 // 파일명은 100 글자 이내
 // HEAD : 최소 한 글자
@@ -33,13 +33,20 @@ const 파일명정렬lodash = (files: string[]): string[] => {
     fileMap.set(customWordsFile, idx);
     return customWordsFile;
   });
-  //! HEAD와 NUMBER 정렬
-  const sortByHEADByNUMBER = sortBy(
-    orderBy(filesWithCustomWords, (file) => parseInt(file[1], 10)),
-    (file) => file[0],
-  );
+  //! HEAD와 NUMBER 정렬 - lodash version
+  // const sortByHEADByNUMBER = sortBy(
+  //   orderBy(filesWithCustomWords, (file) => parseInt(file[1], 10)),
+  //   (file) => file[0],
+  // );
+  //! HEAD와 NUMBER 정렬 - vanilla version
+  filesWithCustomWords.sort((file1, file2) => {
+    if (file1[0] === file2[0]) {
+      return parseInt(file1[1], 10) - parseInt(file2[1], 10);
+    }
+    return file1[0] < file2[0] ? -1 : 1;
+  });
   //! 정렬된 배열 맵핑
-  const filesMapToArr = sortByHEADByNUMBER.map(
+  const filesMapToArr = filesWithCustomWords.map(
     (file) => files[fileMap.get(file)],
   );
   return filesMapToArr;
