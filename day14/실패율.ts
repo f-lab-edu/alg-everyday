@@ -22,27 +22,29 @@ import { sum } from "lodash";
 
 const failure = (N: number, stages: number[]): number[] => {
   //! 스테이지 별 도전 중인 유저의 수 배열
-  const yetClearedUsersNumArr = Array(N + 1).fill(0);
+  const yetClearedUsersCounts = Array(N + 1).fill(0);
   stages.forEach((v) => {
-    yetClearedUsersNumArr[v - 1]++;
+    yetClearedUsersCounts[v - 1]++;
   });
 
   //! 스테이지 별 실패율 배열, index 값 매핑
   const failRateMap = new Map();
-  const failRateArr = yetClearedUsersNumArr.map((v, idx) => {
-    const failRateValue = [v / sum(yetClearedUsersNumArr.slice(idx))]; //| []로 감싸줌으로써 고유의 메모리 값을 가진다.
+  let UsersCountsOnStage = sum(yetClearedUsersCounts);
+  const failRates = yetClearedUsersCounts.map((v, idx) => {
+    const failRateValue = [v / UsersCountsOnStage]; //| []로 감싸줌으로써 고유의 메모리 값을 가진다.
     failRateMap.set(failRateValue, idx + 1);
+    UsersCountsOnStage -= v;
     return failRateValue;
   });
 
   //! 이 시점에서는 마지막 요소 불필요
-  failRateArr.pop();
+  failRates.pop();
 
   //! 최종 정렬
-  failRateArr.sort((rate1, rate2) => rate2[0] - rate1[0]);
+  failRates.sort((rate1, rate2) => rate2[0] - rate1[0]);
 
   //! 매핑
-  return failRateArr.map((v) => failRateMap.get(v));
+  return failRates.map((v) => failRateMap.get(v));
 };
 
 const [d14_N1, d14_stages1] = [5, [2, 1, 2, 6, 2, 4, 3, 3]];
