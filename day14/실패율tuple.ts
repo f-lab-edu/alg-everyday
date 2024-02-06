@@ -19,8 +19,6 @@ const failureTuple = (N: number, stages: number[]): number[] => {
     return failRateValue;
   });
 
-  console.log(failRates);
-
   //! 이 시점에서는 마지막 요소 불필요
   failRates.pop();
 
