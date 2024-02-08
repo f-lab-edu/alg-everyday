@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+const 기능개발 = (prgs, speeds) => {
+  //! 각 progress마다 배포까지 거리는 기간
+  const requiringDays = prgs.map((prg, idx) => {
+    const leftPrg = 100 - prg;
+    const requiringDay = Math.ceil(leftPrg / speeds[idx]);
+    return requiringDay;
+  });
+
+  //! 배포가 가능한 날 배포되는 기능의 개수 배열
+  const deploysPerDay = [];
+  for (let idx = 0, cnt = 1; idx < requiringDays.length; idx++) {
+    // 자연수 >= undefined : false
+    if (requiringDays[idx] >= requiringDays[idx + 1]) {
+      cnt += 1;
+    } else {
+      deploysPerDay.push(cnt);
+      cnt = 1;
+    }
+  }
+  return deploysPerDay;
+};
+
+const [progresses1, speeds1] = [
+  [93, 30, 55],
+  [1, 30, 5],
+];
+const [progresses2, speeds2] = [
+  [95, 90, 99, 99, 80, 99],
+  [1, 1, 1, 1, 1, 1],
+];
+const [progresses3, speeds3] = [
+  [1, 95, 95, 95],
+  [99, 1, 1, 1],
+];
+
+console.log("기능개발1: ", 기능개발(progresses1, speeds1)); // [2, 1]
+console.log("기능개발2: ", 기능개발(progresses2, speeds2)); // [1, 3, 2]
+console.log("기능개발3: ", 기능개발(progresses3, speeds3)); // [1, 3]
+
+</script>
+</html>
