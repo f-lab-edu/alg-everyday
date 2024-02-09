@@ -1,5 +1,7 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42586
 
+import { zip } from "lodash";
+
 // 각 기능은 진도가 100% 일 때, 서비스 반영 가능
 // 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있다.
 // 뒤에 있는 기능은 앞에 있는 기능이 배포될 떄 함께 배포된다.
@@ -12,14 +14,18 @@
 // 배포는 하루에 한 번, 하루의 끝에
 
 const 기능개발 = (prgs: number[], speeds: number[]): number[] => {
+  //! prgs와 speeds의 요소를 Tuple 구조로 가지는 배열 생성 - 전처리 가공
+  const prgSpeedTuples = zip(prgs, speeds);
+  console.log(prgSpeedTuples);
+
   //! 각 progress마다 배포까지 거리는 기간
-  const requiringDays = prgs.map((prg, idx) => {
-    const leftPrg = 100 - prg;
-    const requiringDay = Math.ceil(leftPrg / speeds[idx]);
+  const requiringDays = prgSpeedTuples.map(([prg, speed]) => {
+    const leftPrg = 100 - prg!; // Non-null Assertion Operator
+    const requiringDay = Math.ceil(leftPrg / speed!); // Non-null Assertion Operator
     return requiringDay;
   });
-
   console.log("requiringDays:", requiringDays);
+
   //! 배포가 가능한 날 배포되는 기능의 개수 배열
   const deploysPerDay = [];
   for (
