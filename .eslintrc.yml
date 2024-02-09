@@ -1,5 +1,7 @@
 root: true
 extends: gwyng
+rules:
+  prettier/prettier: ['warn', { 'singleQuote': true, 'printWidth': 150 }]
 settings:
   react:
     version: "18"
