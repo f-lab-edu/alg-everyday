@@ -29,11 +29,12 @@ const 프로세스 = (priorities: number[], location: number): number => {
 
   //! 코어 로직
   while (tuplesQueue.length > 0) {
-    const maxQueue = maxBy(tuplesQueue, 0)![0];
+    const maxPriority = maxBy(tuplesQueue, 0)![0];
     const elementToBoConfirmed = tuplesQueue.shift();
-    (elementToBoConfirmed![0] === maxQueue ? orderedQueue : tuplesQueue).push(
-      elementToBoConfirmed!,
-    );
+    (elementToBoConfirmed![0] === maxPriority
+      ? orderedQueue
+      : tuplesQueue
+    ).push(elementToBoConfirmed!);
   }
   // console.log(orderedQueue);
   // console.log(tuplesQueueForIndexOf[location]);
