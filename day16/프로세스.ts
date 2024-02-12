@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42587
 
-import { map, maxBy } from "lodash";
+import { head, last, map, maxBy } from "lodash";
 
 // 특정 프로세스가 몇 번째로 실행되는지 알아낸다
 
@@ -30,10 +30,10 @@ const 프로세스 = (priorities: number[], location: number): number => {
 
   //! 코어 로직
   // 반복문을 사용할 경우, 전체 순회의 필요성을 확인하자
-  while (orderedQueue[orderedQueue.length - 1] !== locTuple) {
-    const maxPriority = maxBy(tuplesQueue, 0)![0];
+  while (last(orderedQueue) !== locTuple) {
+    const maxPriority = head(maxBy(tuplesQueue, 0));
     const elementToBoConfirmed = tuplesQueue.shift();
-    (elementToBoConfirmed![0] === maxPriority
+    (head(elementToBoConfirmed) === maxPriority
       ? orderedQueue
       : tuplesQueue
     ).push(elementToBoConfirmed!);
