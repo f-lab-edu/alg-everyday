@@ -21,7 +21,7 @@ const 프로세스 = (priorities: number[], location: number): number => {
   const tuplesQueue = map(priorities, (priority, loc) => [priority, loc]);
   console.log("tuplesQueue", tuplesQueue);
 
-  //! locationd의 tuple 요소
+  //! location의 tuple 요소
   const locTuple = tuplesQueue[location];
   console.log(locTuple);
 
@@ -29,7 +29,8 @@ const 프로세스 = (priorities: number[], location: number): number => {
   const orderedQueue: number[][] = [];
 
   //! 코어 로직
-  while (tuplesQueue.length > 0) {
+  // 반복문을 사용할 경우, 전체 순회의 필요성을 확인하자
+  while (orderedQueue[orderedQueue.length - 1] !== locTuple) {
     const maxPriority = maxBy(tuplesQueue, 0)![0];
     const elementToBoConfirmed = tuplesQueue.shift();
     (elementToBoConfirmed![0] === maxPriority
