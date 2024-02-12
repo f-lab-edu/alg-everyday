@@ -40,7 +40,7 @@ const 프로세스 = (priorities: number[], location: number): number => {
   }
   console.log("orderedQueue", orderedQueue);
 
-  return orderedQueue.indexOf(locTuple) + 1;
+  return orderedQueue.length;
 };
 
 const [d16priorities1, d16location1] = [[2, 1, 3, 2], 2];
