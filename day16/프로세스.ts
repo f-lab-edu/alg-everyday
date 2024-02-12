@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42587
 
-import { head, last, map, maxBy } from "lodash";
+import { head, last, map, maxBy, reverse } from "lodash";
 
 // 특정 프로세스가 몇 번째로 실행되는지 알아낸다
 
@@ -19,26 +19,26 @@ import { head, last, map, maxBy } from "lodash";
 const 프로세스 = (priorities: number[], location: number): number => {
   //! [priority, location] 튜플 구조 배열 선언
   const tuplesQueue = map(priorities, (priority, loc) => [priority, loc]);
-  console.log("tuplesQueue", tuplesQueue);
+  // console.log("tuplesQueue", tuplesQueue);
 
   //! location의 tuple 요소
   const locTuple = tuplesQueue[location];
-  console.log(locTuple);
+  // console.log(locTuple);
 
   //! 실행 순서가 정렬될 큐 선언
   const orderedQueue: number[][] = [];
 
   //! 코어 로직
+  const reversedTuplesQueue = reverse(tuplesQueue);
   // 반복문을 사용할 경우, 전체 순회의 필요성을 확인하자
   while (last(orderedQueue) !== locTuple) {
-    const maxPriority = head(maxBy(tuplesQueue, 0));
-    const elementToBoConfirmed = tuplesQueue.shift();
-    (head(elementToBoConfirmed) === maxPriority
-      ? orderedQueue
-      : tuplesQueue
-    ).push(elementToBoConfirmed!);
+    const maxPriority = head(maxBy(reversedTuplesQueue, 0));
+    const elementToBoConfirmed = reversedTuplesQueue.pop();
+    if (head(elementToBoConfirmed) === maxPriority)
+      orderedQueue.push(elementToBoConfirmed!);
+    else reversedTuplesQueue.unshift(elementToBoConfirmed!);
   }
-  console.log("orderedQueue", orderedQueue);
+  // console.log("orderedQueue", orderedQueue);
 
   return orderedQueue.length;
 };
