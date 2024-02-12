@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42587
 
-import { clone, map, maxBy } from "lodash";
+import { map, maxBy } from "lodash";
 
 // 특정 프로세스가 몇 번째로 실행되는지 알아낸다
 
@@ -18,11 +18,12 @@ import { clone, map, maxBy } from "lodash";
 
 const 프로세스 = (priorities: number[], location: number): number => {
   //! [priority, location] 튜플 구조 배열 선언
-  const tuplesQueue = map(priorities, (priority, idx) => {
-    const loc = idx + 1;
-    return [priority, loc];
-  });
-  const tuplesQueueForIndexOf = clone(tuplesQueue); // 얕은 복사로도 조건 충족
+  const tuplesQueue = map(priorities, (priority, loc) => [priority, loc]);
+  console.log("tuplesQueue", tuplesQueue);
+
+  //! locationd의 tuple 요소
+  const locTuple = tuplesQueue[location];
+  console.log(locTuple);
 
   //! 실행 순서가 정렬될 큐 선언
   const orderedQueue: number[][] = [];
@@ -36,9 +37,9 @@ const 프로세스 = (priorities: number[], location: number): number => {
       : tuplesQueue
     ).push(elementToBoConfirmed!);
   }
-  // console.log(orderedQueue);
-  // console.log(tuplesQueueForIndexOf[location]);
-  return orderedQueue.indexOf(tuplesQueueForIndexOf[location]) + 1;
+  console.log("orderedQueue", orderedQueue);
+
+  return orderedQueue.indexOf(locTuple) + 1;
 };
 
 const [d16priorities1, d16location1] = [[2, 1, 3, 2], 2];
