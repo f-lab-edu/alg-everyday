@@ -45,6 +45,12 @@ const 프로세스 = (priorities: number[], location: number): number => {
 
 const [d16priorities1, d16location1] = [[2, 1, 3, 2], 2];
 const [d16priorities2, d16location2] = [[1, 1, 9, 1, 1, 1], 0];
+const [d16priorities3, d16location3] = [[5, 4, 3, 2, 1], 4];
+const [d16priorities4, d16location4] = [[1, 2, 3, 4, 5], 2];
+const [d16priorities5, d16location5] = [[5, 4, 3, 2, 1], 0];
 
 console.log(프로세스(d16priorities1, d16location1)); // 1
 console.log(프로세스(d16priorities2, d16location2)); // 5
+console.log(프로세스(d16priorities3, d16location3)); // 5
+console.log(프로세스(d16priorities4, d16location4)); // 3
+console.log(프로세스(d16priorities5, d16location5)); // 1
