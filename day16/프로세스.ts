@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42587
 
-import { head, last, map, maxBy, reverse } from "lodash";
+import { last, map, maxBy } from 'lodash';
 
 // 특정 프로세스가 몇 번째로 실행되는지 알아낸다
 
@@ -17,28 +17,27 @@ import { head, last, map, maxBy, reverse } from "lodash";
 // 하나 남으면, 남은 하나 실행하면 된다.
 
 const 프로세스 = (priorities: number[], location: number): number => {
+  // Tuple type 선언
+  // type Tuple = [number, number];
+
   //! [priority, location] 튜플 구조 배열 선언
-  const tuplesQueue = map(priorities, (priority, loc) => [priority, loc]);
-  // console.log("tuplesQueue", tuplesQueue);
+  const tuplesQueue: [number, number][] = map(priorities, (priority, loc) => [priority, loc]);
+  // console.log('tuplesQueue', tuplesQueue);
 
   //! location의 tuple 요소
-  const locTuple = tuplesQueue[location];
-  // console.log(locTuple);
+  const locTuple: [number, number] = tuplesQueue[location];
+  // console.log('locTuple', locTuple);
 
   //! 실행 순서가 정렬될 큐 선언
-  const orderedQueue: number[][] = [];
+  const orderedQueue: [number, number][] = [];
 
-  //! 코어 로직
-  const reversedTuplesQueue = reverse(tuplesQueue);
-  // 반복문을 사용할 경우, 전체 순회의 필요성을 확인하자
+  //반복문을 사용할 경우, 전체 순회의 필요성을 확인하자
   while (last(orderedQueue) !== locTuple) {
-    const maxPriority = head(maxBy(reversedTuplesQueue, 0));
-    const elementToBoConfirmed = reversedTuplesQueue.pop();
-    if (head(elementToBoConfirmed) === maxPriority)
-      orderedQueue.push(elementToBoConfirmed!);
-    else reversedTuplesQueue.unshift(elementToBoConfirmed!);
+    const maxPriority = maxBy(tuplesQueue, 0)![0];
+    const elementToBoConfirmed = tuplesQueue.shift();
+    (elementToBoConfirmed![0] === maxPriority ? orderedQueue : tuplesQueue).push(elementToBoConfirmed!);
   }
-  // console.log("orderedQueue", orderedQueue);
+  // console.log('orderedQueue', orderedQueue);
 
   return orderedQueue.length;
 };
@@ -48,9 +47,11 @@ const [d16priorities2, d16location2] = [[1, 1, 9, 1, 1, 1], 0];
 const [d16priorities3, d16location3] = [[5, 4, 3, 2, 1], 4];
 const [d16priorities4, d16location4] = [[1, 2, 3, 4, 5], 2];
 const [d16priorities5, d16location5] = [[5, 4, 3, 2, 1], 0];
+const [d16priorities6, d16location6] = [[2, 3, 1, 2, 3, 3], 4];
 
 console.log(프로세스(d16priorities1, d16location1)); // 1
 console.log(프로세스(d16priorities2, d16location2)); // 5
 console.log(프로세스(d16priorities3, d16location3)); // 5
 console.log(프로세스(d16priorities4, d16location4)); // 3
 console.log(프로세스(d16priorities5, d16location5)); // 1
+console.log(프로세스(d16priorities6, d16location6)); // 2
