@@ -18,7 +18,7 @@ const 전화번호목록 = (phone_book: string[]): boolean => {
 
 // ver 2. sort() - 효율성 충족
 const 전화번호목록2 = (phone_book: string[]): boolean => {
-  phone_book.sort();
+  phone_book.sort((a, b) => a.localeCompare(b));
   return !phone_book.some((v, i) => {
     if (i === phone_book.length - 1) return false;
     return phone_book[i + 1].startsWith(v);
