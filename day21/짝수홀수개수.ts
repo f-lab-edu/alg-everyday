@@ -5,7 +5,10 @@ import { forEach } from 'lodash';
 const 짝수홀수개수 = (numList: number[]): number[] => {
   let evenCnt = 0;
   let oddCnt = 0;
-  forEach(numList, (n) => (n % 2 === 0 ? evenCnt++ : oddCnt++));
+  forEach(numList, (n) => {
+    if (n % 2 === 0) evenCnt++;
+    else oddCnt++;
+  });
   return [evenCnt, oddCnt];
 };
 
