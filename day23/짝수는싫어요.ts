@@ -2,7 +2,7 @@
 
 const 짝수는싫어요 = (n: number): number[] => {
   const oddNumbers = [];
-  for (let i = 1; i <= n; i += 2) if (i % 2 !== 0) oddNumbers.push(i);
+  for (let i = 1; i <= n; i += 2) oddNumbers.push(i);
   return oddNumbers;
 };
 
