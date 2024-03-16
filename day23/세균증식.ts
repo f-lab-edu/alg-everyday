@@ -1,11 +1,12 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/120910
 
-import { multiply } from 'lodash';
+// import { multiply } from 'lodash';
 
 const 세균증식 = (n: number, t: number): number => {
   let cnts = n;
   while (t > 0) {
-    cnts = multiply(cnts, 2);
+    // cnts = multiply(cnts, 2);
+    cnts *= 2;
     t--;
   }
   return cnts;
