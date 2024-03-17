@@ -35,10 +35,10 @@ const 더맵게2 = (scoville: number[], k: number) => {
   const minHeap = new MinHeap();
 
   //최소힙에 데이터 입력
-  scoville.forEach((v) => minHeap.insert(v));
+  scoville.forEach((v) => minHeap.push(v));
 
   let cnt = 0;
-  while (minHeap.getMinValue() < k) {
+  while (minHeap.pop() < k) {
     // 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우
     if (minHeap.heap.length === 2) return -1;
 
@@ -47,7 +47,7 @@ const 더맵게2 = (scoville: number[], k: number) => {
     const newFoodScoville = nonSpicy1 + nonSpicy2 * 2;
 
     // 최소힙에 섞은 음식의 스코빌 지수를 입력
-    minHeap.insert(newFoodScoville);
+    minHeap.push(newFoodScoville);
     cnt++;
   }
   return cnt;
@@ -62,7 +62,8 @@ class MinHeap {
     // 1번 인덱스부터 시작하는 것이 더 직관적인 코드로 보인다.
   }
 
-  insert(number: number): void {
+  // insert(number: number): void {
+  push(number: number): void {
     // 요소 삽입
     this.heap.push(number);
 
@@ -120,7 +121,8 @@ class MinHeap {
   }
 
   // 최소값 반환
-  getMinValue(): number {
+  // getMinValue(): number {
+  pop(): number {
     return this.heap[1];
   }
 }
