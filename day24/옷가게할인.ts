@@ -1,11 +1,11 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/120818
-import { floor } from 'lodash';
+import { takeWhile } from 'lodash';
 
 const 옷가게할인 = (price: number): number => {
-  if (price >= 500000) return floor(price * 0.8);
-  if (price >= 300000) return floor(price * 0.9);
-  if (price >= 100000) return floor(price * 0.95);
-  else return price;
+  const priceCriteria = [100000, 300000, 500000];
+  const discountPers = [0.95, 0.9, 0.8];
+  const idx = takeWhile(priceCriteria, (criterion) => price >= criterion).length - 1;
+  return price * discountPers[idx];
 };
 
 const d24price1 = 150000;
