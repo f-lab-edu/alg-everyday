@@ -20,8 +20,7 @@ const 더맵게 = (scoville: number[], k: number): number => {
     // 모든 음식의 스코빌 지수를 K 이상으로 만들 수 없는 경우
     if (scoville.length === 1) return -1;
 
-    const mixedFood = scovilleOfMixedFood(scoville[0], scoville[1]);
-    scoville.splice(0, 2);
+    const mixedFood = scovilleOfMixedFood(...(scoville.splice(0, 2) as [number, number]));
     scoville.unshift(mixedFood);
     scoville.sort((a, b) => a - b);
     cnt++;
