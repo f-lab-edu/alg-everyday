@@ -11,6 +11,8 @@
 // 가로 1~100,000
 // 세로 1~100,000
 type Tuple = [number, number];
+
+//! 제출 코드
 const seat = (seat: Tuple[]): number => {
   // 6자리 문자열로 변환
   const numToStrWith6Pads = (num: number) => num.toString().padStart(6, '0');
@@ -24,6 +26,16 @@ const seat = (seat: Tuple[]): number => {
   // Set 객체로 중복 제거
   const seatSet = new Set(serializedSeat);
 
+  return seatSet.size;
+};
+
+//! 개선 코드
+const seat2 = (seat: Tuple[]): number => {
+  //  serializedSeat: seat 배열 요소를 `${row},${col}로 문자열화 시킨다.
+  const serializedSeat = seat.map(([row, col]) => `${row},${col}`);
+
+  // Set 객체로 중복 제거
+  const seatSet = new Set(serializedSeat);
   return seatSet.size;
 };
 
@@ -44,3 +56,6 @@ const day27seat2: Tuple[] = [
 
 console.log(seat(day27seat1));
 console.log(seat(day27seat2));
+
+console.log(seat2(day27seat1));
+console.log(seat2(day27seat2));
