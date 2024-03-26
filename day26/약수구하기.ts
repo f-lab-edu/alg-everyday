@@ -8,12 +8,13 @@ const 약수구하기 = (n: number): number[] => {
   for (let i = 1; i < nSqrt; i++) {
     if (n % i === 0) {
       ans1.push(i);
-      ans2.unshift(n / i);
+      // ans2.unshift(n / i);
+      ans2.push(n / i);
     }
   }
   if (Number.isInteger(nSqrt)) ans1.push(nSqrt);
 
-  return [...ans1, ...ans2];
+  return [...ans1, ...ans2.reverse()];
 };
 
 const d29n1 = 24;
