@@ -17,8 +17,8 @@ const 외계행성의나이 = (age: number): string => {
 };
 
 const 외계행성의나이2 = (age: number): string => {
-  const Alphabet: string = 'abcdefghi';
-  return [...age.toString()].map((v) => Alphabet[parseInt(v, 10)]).join('');
+  const alphabet: string = 'abcdefghi';
+  return [...age.toString()].map((v) => alphabet[parseInt(v, 10)]).join('');
 };
 
 console.log(외계행성의나이(23)); // "cd"
