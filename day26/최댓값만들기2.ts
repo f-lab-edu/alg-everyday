@@ -35,6 +35,16 @@ function 최댓값만들기2_withoutLodash(numbers: number[]) {
   return Math.max(cmp1, cmp2);
 }
 
+//! Using [ at ]
+function 최댓값만들기2_withoutLodash2(numbers: number[]) {
+  const numsLen = numbers.length;
+  if (numsLen === 2) return numbers.at(0)! * numbers.at(1)!;
+  numbers.sort((a, b) => a - b);
+  const cmp1 = numbers.at(0)! * numbers.at(1)!;
+  const cmp2 = numbers.at(-1)! * numbers.at(-2)!;
+  return Math.max(cmp1, cmp2);
+}
+
 const d28numbers1 = [1, 2, -3, 4, -5];
 const d28numbers2 = [0, -31, 24, 10, 1, 9];
 const d28numbers3 = [10, 20, 30, 5, 5, 20, 5];
@@ -46,3 +56,7 @@ console.log(최댓값만들기2(d28numbers3)); // 600
 console.log(최댓값만들기2_withoutLodash(d28numbers1)); // 15
 console.log(최댓값만들기2_withoutLodash(d28numbers2)); // 240
 console.log(최댓값만들기2_withoutLodash(d28numbers3)); // 600
+
+console.log(최댓값만들기2_withoutLodash2(d28numbers1)); // 15
+console.log(최댓값만들기2_withoutLodash2(d28numbers2)); // 240
+console.log(최댓값만들기2_withoutLodash2(d28numbers3)); // 600
