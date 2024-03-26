@@ -10,8 +10,12 @@
 // "bbb"
 // 키워드: 재귀 호출
 
-// 1. 반복문
-function* perm(length: number) {
+//| 결론
+// "함수1"과 "함수3"의 시간 효율은 비슷하다. 다만, "함수3"은 각 값의 호출 시점을 조절할 수 있다.
+// "함수2"는 시간 효율도 떨어지며, RangeError를 발생시키기도 한다.
+
+//! 1. 반복문
+function* permutation1(length: number) {
   const map = new Map();
   map.set('0', 'a');
   map.set('1', 'b');
@@ -23,24 +27,59 @@ function* perm(length: number) {
 }
 
 console.log(`1. 반복문을 활용한 제너레이터`);
-const gen = perm(3);
+console.time('1의 실행 시간');
+const gen = permutation1(11);
 for (const value of gen) {
-  console.log(value);
+  // console.log(value);
 }
+console.timeEnd('1의 실행 시간');
+// ------------------------------------------------------------------------------------------------
 
-// 2. 재귀 호출
-// function perm2(length: number, n?: number): Generator
-function* perm2(length: number, n = 0): Generator {
+//! 2. 재귀 호출 ver1
+// function permutation2(length: number, n?: number): Generator
+function* permutation2(length: number, n = 0): Generator {
   const map = new Map();
   map.set('0', 'a');
   map.set('1', 'b');
   yield [...n.toString(2).padStart(length, '0')].map((v) => map.get(v)).join('');
   if (n === 2 ** length - 1) return;
-  yield* perm2(length, n + 1);
+  yield* permutation2(length, n + 1);
 }
 
-console.log(`\n2. 재귀 호출을 활용한 제너레이터`);
-const gen2 = perm2(3);
-for (const value of gen2) {
-  console.log(value);
+console.log(`\n2. 재귀 호출을 활용한 제너레이터 ver1`);
+console.time('2의 실행 시간');
+const gen2 = permutation2(15);
+try {
+  for (const value of gen2) {
+    console.log(value);
+  }
+} catch (error: unknown) {
+  if (error instanceof Error) console.log(error.message);
+  else console.log('알 수 없는 에러 발생');
 }
+console.timeEnd('2의 실행 시간');
+// Q. 호출 스택의 한계를 감지하는 방법은? try-catch문
+// ------------------------------------------------------------------------------------------------
+
+//! 3. 재귀 호출 ver2
+//| length만 인수로 받는 제너레이터 함수
+// 명목상 제너레이터 함수 (...?)
+function* permutation3(length: number): Generator {
+  yield* permGen(length, ''); // - (0)
+
+  //| 코어 로직을 실행하는 진짜 제너레이터 함수
+  function* permGen(length: number, str: string): Generator {
+    if (str.length < length) {
+      yield* permGen(length, str + 'a'); // - (1)
+      yield* permGen(length, str + 'b'); // - (2)
+    } else yield str; // - (3)
+  }
+}
+
+console.log(`\n3. 재귀 호출을 활용한 제너레이터 ver2`);
+console.time('3의 실행 시간');
+const gen3 = permutation3(11);
+for (const value of gen3) {
+  // console.log(value);
+}
+console.timeEnd('3의 실행 시간');
