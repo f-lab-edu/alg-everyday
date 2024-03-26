@@ -1,5 +1,7 @@
 // 100,000 x 100,000 의 크기를 가지는 좌석
 
+import { isEqual, uniqWith } from 'lodash';
+
 // seat: 원하는 좌석이 행렬로 담긴 배열
 // 좌석이 이미 판매되었을 경우, 집으로 돌아간다.
 // 좌석이 남아있을 경우, 구매한다.
@@ -39,6 +41,11 @@ const seat2 = (seat: Tuple[]): number => {
   return seatSet.size;
 };
 
+//! 개선 코드 - lodash
+const seat3 = (seat: Tuple[]): number => {
+  return uniqWith(seat, isEqual).length;
+};
+
 const day27seat1: Tuple[] = [
   [1, 1],
   [2, 1],
@@ -59,3 +66,6 @@ console.log(seat(day27seat2));
 
 console.log(seat2(day27seat1));
 console.log(seat2(day27seat2));
+
+console.log(seat3(day27seat1));
+console.log(seat3(day27seat2));
