@@ -102,3 +102,17 @@ function* permutation4(length: number): Generator {
   // }
   // 출력 순서가 이쁘지 않기 때문에 따로따로 for문을 순회한다.
 }
+
+//! 2안
+// 배열의 크기로 메모리 효율이 떨어진다.
+function permutation5(length: number): string[] {
+  // 제너레이터 map
+  function* map() {
+    // 상세 코드는 이전 과제에...
+  }
+
+  if (length === 0) return [''];
+  return permutation5(length - 1)
+    .map((x) => 'a' + x)
+    .concat(permutation5(length - 1).map((x) => 'b' + x));
+}
