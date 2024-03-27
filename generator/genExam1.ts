@@ -69,10 +69,12 @@ function* permutation3(length: number): Generator {
 
   //| 코어 로직을 실행하는 진짜 제너레이터 함수
   function* permGen(length: number, str: string): Generator {
-    if (str.length < length) {
-      yield* permGen(length, str + 'a'); // - (1)
-      yield* permGen(length, str + 'b'); // - (2)
-    } else yield str; // - (3)
+    if (str.length === length) {
+      yield str;
+      return;
+    }
+    yield* permGen(length, str + 'a'); // - (1)
+    yield* permGen(length, str + 'b'); // - (2)
   }
 }
 
