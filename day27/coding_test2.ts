@@ -32,6 +32,7 @@ const seat = (seat: Tuple[]): number => {
 };
 
 //! 개선 코드
+// JSON.stringify([x, y])와 같은 대안도 존재한다.
 const seat2 = (seat: Tuple[]): number => {
   //  serializedSeat: seat 배열 요소를 `${row},${col}로 문자열화 시킨다.
   const serializedSeat = seat.map(([row, col]) => `${row},${col}`);
