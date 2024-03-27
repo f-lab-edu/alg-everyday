@@ -116,3 +116,11 @@ function permutation5(length: number): string[] {
     .map((x) => 'a' + x)
     .concat(permutation5(length - 1).map((x) => 'b' + x));
 }
+
+//! combination
+// function* combination<T>(xs: T[]): Iterable<T[]> {
+//   if(xs.length === 0) return yield []
+
+//
+// }
+// combination(['x', 'y', 'z']);
