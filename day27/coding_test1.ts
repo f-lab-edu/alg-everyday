@@ -21,12 +21,19 @@ const sol2 = (a: number, b: number, c: number, d: number): number => {
   // 최대공약수
   const lcm = (c * d) / gcd(c, d);
 
+  // 함수화
+  const countMultiples = (x: number, start: number, end: number) => {
+    return Math.floor(end / x) - Math.ceil(start / x) + 1;
+  };
+
   // a~b사이, c의 배수 개수
-  const cntC = Math.floor(b / c) - Math.ceil(a / c) + 1;
+  // const cntC = Math.floor(b / c) - Math.ceil(a / c) + 1;
+  const cntC = countMultiples(c, a, b);
 
   // a~b사이, c,d의 최대공약수 개수
   // c의 배수이면서, d의 배수인 숫자의 개수
-  const countLcm = Math.floor(b / lcm) - Math.ceil(a / lcm) + 1;
+  // const countLcm = Math.floor(b / lcm) - Math.ceil(a / lcm) + 1;
+  const countLcm = countMultiples(lcm, a, b);
 
   return cntC - countLcm;
 };
