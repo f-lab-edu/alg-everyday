@@ -85,3 +85,20 @@ for (const value of gen3) {
   // console.log(value);
 }
 console.timeEnd('3의 실행 시간');
+
+//! 4. 모범 답안
+function* permutation4(length: number): Generator {
+  if (length === 0) return yield '';
+
+  for (const i of permutation4(length - 1)) {
+    yield 'a' + i;
+  }
+  for (const i of permutation4(length - 1)) {
+    yield 'b' + i;
+  }
+  // for(const i of permutation4(length - 1)) {
+  //   yield 'a' + i;
+  //   yield 'b' + i;
+  // }
+  // 출력 순서가 이쁘지 않기 때문에 따로따로 for문을 순회한다.
+}
