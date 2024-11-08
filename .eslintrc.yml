@@ -1,5 +1,5 @@
 root: true
-extends: gwyng
+extends: lgyn10
 rules:
   prettier/prettier: ['warn', { 'singleQuote': true, 'printWidth': 150, 'traillingComma': 'none' }]
 settings:
