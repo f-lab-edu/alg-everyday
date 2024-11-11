@@ -6,7 +6,7 @@
 const 안전지대 = (board: number[][]): number => {
   const nLen = board.length;
 
-  const bombLoc: number[][] = [];
+  const bombLoc: [number, number][] = [];
   board.forEach((row, rowIndex) => {
     row.forEach((cell, colIndex) => {
       if (cell === 1) bombLoc.push([rowIndex, colIndex]);
