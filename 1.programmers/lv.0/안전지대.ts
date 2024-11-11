@@ -1,7 +1,7 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/120866
 
 // board는 n*n 배열
-// 지뢰에 인접한 위, 아래, 좌, 우, 대각선 칸은 모두 위험지역(fatalZone)
+// 지뢰에 인접한 위, 아래, 좌, 우, 대각선 칸은 모두 위험지역(dangerZone)
 
 const 안전지대 = (board: number[][]): number => {
   const nLen = board.length;
@@ -13,21 +13,23 @@ const 안전지대 = (board: number[][]): number => {
     });
   });
 
-  const fatalZone = new Set();
-  const addStringToSet = (n: number, m: number): void => {
+  const dangerZone = new Set();
+  // addStringToSet
+
+  const markDangerZone = (n: number, m: number): void => {
     if (n < 0 || m < 0 || n >= nLen || m >= nLen) return; // 예외 처리
-    fatalZone.add(`${n}, ${m}`);
+    dangerZone.add(`${n}, ${m}`);
   };
 
   bombLoc.forEach(([row, col]: number[]) => {
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
-        addStringToSet(row + i, col + j);
+        markDangerZone(row + i, col + j);
       }
     }
   });
 
-  return nLen * nLen - fatalZone.size;
+  return nLen * nLen - dangerZone.size;
 };
 
 console.log(
