@@ -12,8 +12,8 @@ const 겹치는선분의길이 = (lines: Line[]): number => {
 
   const overlapCnts = Array(maxNum - minNum).fill(0);
 
-  lines.forEach((line) => {
-    for (let i = line[0] - minNum; i < line[1] - minNum; i++) overlapCnts[i]++;
+  lines.forEach(([v1, v2]) => {
+    for (let i = v1 - minNum; i < v2 - minNum; i++) overlapCnts[i]++;
   });
 
   return overlapCnts.filter((cnt) => cnt >= 2).length;
