@@ -30,9 +30,7 @@
 //! 2 성공
 const 평행 = (dots: [number, number][]): number => {
   for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-      if (i === j) continue;
-
+    for (let j = i + 1; j < 4; j++) {
       const idxOfRestDots = [0, 1, 2, 3].filter((idx) => idx !== i && idx !== j);
       const [x1, y1] = dots[i];
       const [x2, y2] = dots[j];
