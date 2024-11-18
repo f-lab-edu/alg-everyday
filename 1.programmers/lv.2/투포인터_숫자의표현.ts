@@ -42,8 +42,30 @@ const 숫자의표현2 = (n: number): number => {
   return ans;
 };
 
+//! 2. 투 포인터 - 중복 제거
+const 숫자의표현3 = (n: number): number => {
+  let ans = 0;
+  let start = 1,
+    end = 1,
+    sum = 1;
+
+  while (start <= n) {
+    if (sum >= n) {
+      if (sum === n) ans++;
+      sum -= start;
+      start++;
+    } else {
+      end++;
+      sum += end;
+    }
+  }
+
+  return ans;
+};
+
 console.log(숫자의표현(15)); // 4
 console.log(숫자의표현2(15)); // 4
+console.log(숫자의표현3(15)); // 4
 
 console.time('브루트포스');
 console.log(숫자의표현(500000000)); // 10, 4.916ms
